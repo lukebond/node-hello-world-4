@@ -3,7 +3,7 @@ pipeline:
   team4-test:
     image: quay.io/ukhomeofficedigital/nodejs-base:v6.9.1
     commands:
-      - docker run npm i && npm test 
+      - run npm i && npm test 
     when:
       event: push
 
