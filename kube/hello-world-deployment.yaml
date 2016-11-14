@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: node
-        image: quay.io/ukhomeofficedigital/node-hello-world-4:f6ae93b9ca41be35b1587ec763c99c4df8def1e8
+        image: quay.io/ukhomeofficedigital/node-hello-world-4:0c796f6b57b4457acdff71b84c809001952a0e10
         resources:
           limits:
             cpu: 400m
