@@ -1,4 +1,4 @@
-FROM quay.io/ukhomeofficedigital/nodejs-base:v6.9.1
+FROM quay.io/ukhomeofficedigital/nodejs:v4.4.7
 
 USER nodejs
 
