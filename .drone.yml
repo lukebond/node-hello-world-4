@@ -29,6 +29,16 @@ pipeline:
       branch: master
       event: push
 
+  deploy_to_dev:
+    image: quay.io/ukhomeofficedigital/kd:v0.2.2
+    environment:
+      - KUBE_NAMESPACE=workshop4
+    commands:
+      - kd --file ./kube/hello-world-service.yaml --file ./kube/hello-world-deployment.yaml --file ./kube/hello-world-ingress.yaml
+    when:
+      environment: dev
+      event: deployment
+
 services:
   dind:
     image: docker:1.11-dind

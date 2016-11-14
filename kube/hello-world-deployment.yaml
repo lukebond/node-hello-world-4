@@ -11,12 +11,12 @@ spec:
     spec:
       containers:
       - name: node
-        image: quay.io/ukhomeofficedigital/node-hello-world-4:0c796f6b57b4457acdff71b84c809001952a0e10
+        image: quay.io/ukhomeofficedigital/node-hello-world-4:{{.DRONE_COMMIT_SHA}}
         resources:
           limits:
             cpu: 400m
             memory: 256Mi
         ports:
-        - name: https
-          containerPort: 443
+        - name: http
+          containerPort: 4000
           protocol: TCP

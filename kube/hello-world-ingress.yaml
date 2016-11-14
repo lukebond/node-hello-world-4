@@ -1,0 +1,14 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hello-world4
+spec:
+  rules:
+  - host: induction-hello-world4.notprod.homeoffice.gov.uk
+    http:
+      paths:
+      - backend:
+          serviceName: hello-world4
+          servicePort: http
+        path: /
