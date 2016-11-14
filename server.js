@@ -9,7 +9,7 @@ console.log('Server running at http://localhost:' + port)
 
 app.get('/', (req, res) => {
   res.set('Content-Type', 'text/plain')
-  res.send(`Hello world - DRONE DRONE DRONE \nSECRET: ${process.env.MYSUPERSECRET}`)
+  res.send(`This is a brand new message, for a brand new deployment.\n`)
   return res.end();
 })
 
