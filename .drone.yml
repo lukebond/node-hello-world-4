@@ -33,8 +33,9 @@ pipeline:
     image: quay.io/ukhomeofficedigital/kd:v0.2.2
     environment:
       - KUBE_NAMESPACE=workshop4
+      - KUBE_SERVER=https://kube-dev-dsp.notprod.homeoffice.gov.uk
     commands:
-      - kd --file ./kube/hello-world-service.yaml --file ./kube/hello-world-deployment.yaml --file ./kube/hello-world-ingress.yaml
+      - kd --insecure-skip-tls-verify --file ./kube/hello-world-service.yaml --file ./kube/hello-world-deployment.yaml --file ./kube/hello-world-ingress.yaml
     when:
       environment: dev
       event: deployment
