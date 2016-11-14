@@ -1,0 +1,38 @@
+pipeline:
+
+  team4-test:
+    image: quay.io/ukhomeofficedigital/nodejs-base:v6.9.1
+    commands:
+      - npm i && npm test 
+    when:
+      event: push
+
+  team4-build:
+    privileged: true
+    image: docker:1.11
+    environment:
+      - DOCKER_HOST=tcp://127.0.0.1:2375
+    commands:
+      - docker build -t team4 .
+    when:
+      event: push
+
+  team4-push-to-quay0:
+    image: docker:1.11
+    environment:
+      - DOCKER_HOST=tcp://127.0.0.1:2375
+    commands:
+      - docker login -u="ukhomeofficedigital+drone_demo" -p=${DOCKER_PASSWORD} quay.io
+      - docker tag team4 quay.io/ukhomeofficedigital/node-hello-world-4:${DRONE_COMMIT_SHA}
+      - docker push quay.io/ukhomeofficedigital/node-hello-world-4:${DRONE_COMMIT_SHA}
+    when:
+      branch: master
+      event: push
+
+services:
+  dind:
+    image: docker:1.11-dind
+    privileged: true
+    command:
+      - "-s"
+      - "overlay"
