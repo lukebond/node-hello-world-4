@@ -37,8 +37,8 @@ pipeline:
     commands:
       - kd --insecure-skip-tls-verify --file ./kube/hello-world-service.yaml --file ./kube/hello-world-deployment.yaml --file ./kube/hello-world-ingress.yaml
     when:
-      environment: dev
-      event: deployment
+      branch: master
+      event: push
 
 services:
   dind:
